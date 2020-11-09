@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ name }}</h1>
+  <Increment />
+  <Users />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Users from '@/components/Users'
+import Increment from '@/components/Increment'
+import usersStore from '@/store/usersStore'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Users,
+    Increment
+  },
+  provide: {
+    usersStore
+  },
+  computed: {
+    name () {
+      return usersStore.appName
+    }
+  },
+  created () {
+    console.log(usersStore.appName)
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
