@@ -7,7 +7,7 @@ export default {
   inject: ['usersStore'],
   methods: {
     increment () {
-      this.usersStore.increment()
+      this.usersStore.actions.increment()
     }
   }
 }

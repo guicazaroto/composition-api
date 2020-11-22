@@ -15,11 +15,11 @@ export default {
       return this.usersStore.state.data
     },
     counter () {
-      return this.usersStore.state.counter
+      return this.usersStore.getters.counter
     }
   },
   created () {
-    this.usersStore.getData()
+    this.usersStore.actions.getData()
   }
 }
 </script>

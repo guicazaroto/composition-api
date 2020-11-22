@@ -8,21 +8,24 @@ const state = reactive({
 
 const appName = ref('Composition App')
 
-async function getData () {
-  const res = await axios.get('https://api.github.com/users')
-  state.data = res.data
+
+const actions = {
+  increment () {
+    state.counter++
+  },
+  async getData () {
+    const res = await axios.get('https://api.github.com/users')
+    state.data = res.data
+  }
 }
 
-function increment () {
-  state.counter++
+const getters = {
+  counter: computed(() => state.counter)
 }
-
-const totalUsers = computed(() => state.data.length);
 
 export default readonly({
   state,
-  totalUsers,
-  getData,
-  increment,
+  actions,
+  getters,
   appName
 })
